@@ -1,87 +1,91 @@
 
 
-function scrollFooter(scrollY, heightFooter)
-{
-    console.log(scrollY);
-    console.log(heightFooter);
 
-
-
-    if(scrollY >= heightFooter)
-    {
-        $('footer').css({
-            'bottom' : '0px'
-        });
-    }
-    else
-    {
-        $('footer').css({
-            'bottom' : '-' + heightFooter + 'px'
-        });
-    }
-}
-
-$(window).load(function(){
-    var windowHeight        = $(window).height(),
-        footerHeight        = $('footer').height(),
-        heightDocument      = (windowHeight) + ($('.content').height()) + ($('footer').height()) - 20;
-    
-    // Определения или действия элемента для анимации
-    $('#scroll-animate, #scroll-animate-main').css({
-        'height' :  heightDocument + 'px'
-    });
-
-    // Определение заголовка и содержания элементов
-    $('header').css({
-        'height' : windowHeight + 'px',
-        'line-height' : windowHeight + 'px'
-    });
-
-    $('.wrapper-parallax').css({
-        'margin-top' : windowHeight + 'px'
-    });
-
-    scrollFooter(window.scrollY, footerHeight);
-
-    // ao dar rolagem
-    window.onscroll = function(){
-        var scroll = window.scrollY;
-
-        $('#scroll-animate-main').css({
-            'top' : '-' + scroll + 'px'
-        });
-        
-        $('header').css({
-            'background-position-y' : 50 - (scroll * 100 / heightDocument) + '%'
-        });
-
-        scrollFooter(scroll, footerHeight);
-    }
-
-
-});
-
-$(document).ready(function($) {
-	$('#test_click').click(function() {
-		$('.popup-fade').fadeIn();
-		return false;
-	});	
+// $(document).ready(function($) {
+// 	$('#test_click').click(function() {
+// 		$('.popup-fade').fadeIn();
+// 		return false;
+// 	});	
 	
-	$('.popup-close').click(function() {
-		$(this).parents('.popup-fade').fadeOut();
-		return false;
-	});		
+// 	$('.popup-close').click(function() {
+// 		$(this).parents('.popup-fade').fadeOut();
+// 		return false;
+// 	});		
  
-	$(document).keydown(function(e) {
-		if (e.keyCode === 27) {
-			e.stopPropagation();
-			$('.popup-fade').fadeOut();
-		}
-	});
+// 	$(document).keydown(function(e) {
+// 		if (e.keyCode === 27) {
+// 			e.stopPropagation();
+// 			$('.popup-fade').fadeOut();
+// 		}
+// 	});
 	
-	$('.popup-fade').click(function(e) {
-		if ($(e.target).closest('.popup').length == 0) {
-			$(this).fadeOut();					
-		}
-	});
+// 	$('.popup-fade').click(function(e) {
+// 		if ($(e.target).closest('.popup').length == 0) {
+// 			$(this).fadeOut();					
+// 		}
+// 	});
+// });
+
+// const openFormBtn = document.getElementById('open-form-btn');
+// const signupForm = document.getElementById('signup-form');
+
+// openFormBtn.addEventListener('click', () => {
+//   signupForm.style.display = 'block';
+// });
+
+// document.addEventListener('click', (event) => {
+//   if (event.target !== signupForm && event.target.id !== 'open-form-btn') {
+//     signupForm.style.display = 'none';
+//   }
+// });
+
+$(document).ready(function () {
+    $('.btn-5').on('click', function () {
+      $('html, body').animate({
+        scrollTop: $('#models-homes').offset().top
+      }, 1000);
+    });
 });
+
+$(document).ready(function () {
+    $('.up-button').on('click', function () {
+      $('html, body').animate({
+        scrollTop: $('#name').offset().top
+      }, 1000);
+    });
+});
+
+$(document).ready(function () {
+  $('.btn-4').on('click', function () {
+    $('html, body').animate({
+      scrollTop: $('#questions').offset().top
+    }, 1000);
+  });
+});
+
+
+const hashtag = $("#hashtag");
+let left = 0;
+const speed = 50;
+const interval = 0;
+const pixelsPerUpdate = speed * (interval / 1000);
+
+function updateTicker() {
+    left -= pixelsPerUpdate;
+  
+    hashtag.css("left", left + "px");
+  
+    if (left < -hashtag.outerWidth()) {
+      const tickerText = hashtag.text();
+      hashtag.text(tickerText + " " + tickerText);
+      left = 0;
+    }
+  
+    if (left < -hashtag.outerWidth() + containerWidth) {
+      left = 0;
+    }
+  
+    setTimeout(updateTicker, interval);
+}
+updateTicker();
+
