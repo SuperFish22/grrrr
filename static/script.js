@@ -54,3 +54,21 @@ function updateTicker() {
 
 updateTicker();
 
+// const button = document.querySelector('.up-button');
+// const footer = document.querySelector('.footer');
+
+// const stickyButton = () => {
+//   const buttonTop = button.getBoundingClientRect().top + window.scrollY;
+//   const footerTop = footer.getBoundingClientRect().top + window.scrollYS;
+
+//   if (buttonTop <= footerTop - button.offsetHeight) {
+//     button.style.position = 'absolute';
+//     button.style.bottom = '20px';
+//   } else {
+//     button.style.position = 'sticky';
+//     button.style.bottom = 'auto';
+//   }
+// };
+
+// window.addEventListener('scroll', stickyButton);
+// stickyButton();
