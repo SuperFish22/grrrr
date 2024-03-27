@@ -1,43 +1,7 @@
-
-
-
-// $(document).ready(function($) {
-// 	$('#test_click').click(function() {
-// 		$('.popup-fade').fadeIn();
-// 		return false;
-// 	});	
-	
-// 	$('.popup-close').click(function() {
-// 		$(this).parents('.popup-fade').fadeOut();
-// 		return false;
-// 	});		
- 
-// 	$(document).keydown(function(e) {
-// 		if (e.keyCode === 27) {
-// 			e.stopPropagation();
-// 			$('.popup-fade').fadeOut();
-// 		}
-// 	});
-	
-// 	$('.popup-fade').click(function(e) {
-// 		if ($(e.target).closest('.popup').length == 0) {
-// 			$(this).fadeOut();					
-// 		}
-// 	});
-// });
-
-// const openFormBtn = document.getElementById('open-form-btn');
-// const signupForm = document.getElementById('signup-form');
-
-// openFormBtn.addEventListener('click', () => {
-//   signupForm.style.display = 'block';
-// });
-
-// document.addEventListener('click', (event) => {
-//   if (event.target !== signupForm && event.target.id !== 'open-form-btn') {
-//     signupForm.style.display = 'none';
-//   }
-// });
+// пролайдер
+$(window).on('load', function () {
+  $('.preloader').addClass("preloader-remove");  
+});
 
 $(document).ready(function () {
     $('.btn-5').on('click', function () {
@@ -81,11 +45,12 @@ function updateTicker() {
       left = 0;
     }
   
-    if (left < -hashtag.outerWidth() + containerWidth) {
+    if (left < -hashtag.outerWidth() ) {
       left = 0;
     }
   
     setTimeout(updateTicker, interval);
 }
+
 updateTicker();
 
